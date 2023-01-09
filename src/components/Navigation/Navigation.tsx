@@ -6,13 +6,13 @@ const Navigation = () => {
     return (
     <ul className={NavigationCSS.ul}>
         <li>
-            <Link className={NavigationCSS.link} to="/">Search</Link>
+            <Link to="/">Search</Link>
         </li>
         <li>
-            <Link className={NavigationCSS.link} to="/favourites">Favourites</Link>
+            <Link to="/favourites">Favourites</Link>
         </li>
         <li>
-            <Link className={NavigationCSS.link} to="/about">About</Link>
+            <Link to="/about">About</Link>
         </li>
     </ul>
     );

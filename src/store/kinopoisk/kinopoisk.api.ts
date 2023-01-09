@@ -1,20 +1,20 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {kinopoiskHeader} from './constants';
+import {IFilm, ServerResponse} from '../../models/models';
 
 export const kinopoiskApi = createApi({
     reducerPath: 'kinopoiskApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://kinopoiskapiunofficial.tech/api/v2.2'
+        baseUrl: 'https://kinopoiskapiunofficial.tech/api/v2.1'
     }),
     endpoints: build => ({
-        searchFilms: build.query<any,void>({
-            query: (s) => ({
-                url: `/films`,
+        searchFilms: build.query<IFilm[],string>({
+            query: (search: string) => ({
+                url: `/films/search-by-keyword?keyword=${search}`,
                 method: 'GET',
-                headers: {
-                    'X-API-KEY': '7e92c59a-8041-46bc-888d-b4aba63072e6',
-                    'Content-Type': 'application/json',
-                }
-            })
+                headers: kinopoiskHeader
+            }),
+            transformResponse: (response: ServerResponse<IFilm>) => response.films
         })
     })
 })
