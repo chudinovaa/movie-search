@@ -1,0 +1,28 @@
+.wrapper {
+    width: 400px;
+    height: 200px;
+    border: none;
+    display: flex;
+    margin: 20px 20px 20px 0;
+    box-sizing: content-box;
+}
+.text_wrapper {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.poster_wrapper {
+    position: relative;
+    padding-right: 20px ;
+    height: 200px;
+    width: auto;
+}
+.poster_wrapper img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    border-width: 0;
+    outline-width: 0;
+}

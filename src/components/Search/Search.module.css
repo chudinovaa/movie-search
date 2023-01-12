@@ -1,0 +1,40 @@
+.container {
+    max-width: 1000px;
+}
+
+.search_wrap {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+input {
+    flex-grow: 10;
+    font-size: large;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 0.5rem;
+    min-width: 100px;
+    max-width: 700px;
+    width: 100%;
+    border-width: 1px;
+    height: 42px;
+    border-radius: 3px;
+}
+
+button {
+    float: left;
+    width: 200px;
+    height: 42px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0b7dda;
+}
+
