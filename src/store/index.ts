@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {kinopoiskApi} from './kinopoisk/kinopoisk.api';
 import {kinopoiskReducer} from './kinopoisk/kinopoisk.slice';
-import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 export const store = configureStore({
     reducer: {

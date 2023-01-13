@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
 import Search from '../components/Search/Search';
+import FilmList from '../components/FilmList/FilmList';
 
 const SearchPage = () => {
 
     return (
     <div>
-    <Search/>
-
+        <Search/>
+        <FilmList/>
     </div>
     );
 };

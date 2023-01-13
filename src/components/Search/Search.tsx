@@ -4,9 +4,9 @@ import {useSearchFilmsQuery} from '../../store/kinopoisk/kinopoisk.api';
 import Dropdown from '../DropdownList/Dropdown';
 
 import SearchCSS from './Search.module.css'
-import FilmList from '../FilmList/FilmList';
-import {addSearch} from '../../store/kinopoisk/kinopoisk.slice';
-import {useAppDispatch} from '../../hooks/redux';
+import {addFilms, addSearch} from '../../store/kinopoisk/kinopoisk.slice';
+import {useAppDispatch, useAppSelector} from '../../hooks/redux';
+import {IFilm} from '../../models/models';
 
 const Search = () => {
     const [search, setSearch] = useState('')
@@ -14,6 +14,7 @@ const Search = () => {
     const debounced = useDebounce(search)
     const {data = [], isError, isLoading} = useSearchFilmsQuery(debounced)
     const dispatch = useAppDispatch()
+
 
     useEffect(() => {
         if (debounced.length > 2) {
@@ -31,18 +32,22 @@ const Search = () => {
 
     const handleOnFocus = () => {
         setDropdown(true)
-        console.log('Drop ON')
     }
 
     const handleOnBlur = () => {
         setDropdown(false)
-        console.log('Drop OFF')
 
     }
 
     const onSubmitHandle = (event: React.FormEvent ) => {
         event.preventDefault()
         handleAction()
+    }
+
+    const clickHandle = (films: IFilm[]) => {
+        if (films) {
+            dispatch(addFilms(films))
+        }
     }
 
 
@@ -59,11 +64,12 @@ const Search = () => {
                 onBlur={handleOnBlur}
                 onChange={e => setSearch(e.target.value)}
                 />
-                <button>Поиск</button>
+                <button
+                onClick={() => clickHandle(data)}
+                >Поиск</button>
             </div>
             {dropdown && <Dropdown films={data} isLoad={isLoading} />}
         </form>
-        <FilmList films={data}/>
     </div>
 )};
 
