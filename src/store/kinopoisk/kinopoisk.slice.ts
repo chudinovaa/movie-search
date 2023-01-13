@@ -1,24 +1,24 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 interface kinopoiskState {
-    search: string
+    search: string,
 }
 
 const initialState: kinopoiskState = {
-    search: ''
+    search: '',
 }
 
 export const kinopoiskSlice = createSlice({
     name: 'search',
     initialState,
     reducers: {
-        searchHandler(state, action) {
+        addSearch(state, action) {
+            state.search = action.payload
+            console.log(action.payload)
             console.log(state)
-            console.log(action)
         }
-
     }
 })
 
-export const {searchHandler} = kinopoiskSlice.actions
+export const {addSearch} = kinopoiskSlice.actions
 export const kinopoiskReducer = kinopoiskSlice.reducer

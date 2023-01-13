@@ -1,6 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {kinopoiskApi} from './kinopoisk/kinopoisk.api';
 import {kinopoiskReducer} from './kinopoisk/kinopoisk.slice';
+import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
+
 export const store = configureStore({
     reducer: {
         search: kinopoiskReducer,
@@ -10,5 +12,6 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(kinopoiskApi.middleware)
 })
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch: () => AppDispatch = useDispatch
